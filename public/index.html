@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIMAY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="login-section" class="d-flex align-items-center justify-content-center vh-100 bg-light">
+            <div class="card border-0 shadow-lg p-4 rounded-4 hover-float" style="width: 400px;">
+    <div class="text-center mb-4">
+        <i class="fas fa-university fa-3x text-primary mb-3"></i>
+        <h4 class="fw-bold">BIMAY<span class="text-primary">Pro</span></h4>
+        <p class="text-muted small">Silakan login untuk melanjutkan</p>
+    </div>
+    
+    <div class="mb-3">
+        <input type="text" id="username" class="form-control form-control-lg bg-light border-0" placeholder="Username">
+    </div>
+
+    <div class="mb-3">
+        <input type="password" id="password" class="form-control form-control-lg bg-light border-0" placeholder="Password">
+    </div>
+
+    <button onclick="handleLogin()" class="btn btn-primary w-100 btn-lg rounded-3 fw-bold">MASUK</button>
+    
+    <div class="text-center mt-3">
+        <small class="text-muted">Gunakan: <b>admin/123</b> atau <b>mhs/123</b></small>
+                    </div>
+                </div>
+    </section>
+
+    <section id="dashboard-section" class="d-none">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#"><i class="fas fa-layer-group me-2"></i>SiakadPro</a>
+                <div class="d-flex align-items-center text-white">
+                    <span class="me-3" id="user-display">Halo, User</span>
+                    <button onclick="handleLogout()" class="btn btn-sm btn-light text-primary fw-bold">Logout</button>
+                </div>
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden hover-float">
+    <div class="card-body p-0">
+        </div>
+</div>
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="fw-bold text-dark">Data Akademik</h2>
+                    <p class="text-muted">Dashboard Pengelolaan Data Mahasiswa</p>
+                </div>
+                <button class="btn btn-primary btn-lg shadow-sm px-4 admin-only" onclick="openModal()">
+                    <i class="fas fa-plus me-2"></i>Tambah Data
+                </button>
+            </div>
+
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-body p-0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4 py-3">Mahasiswa</th>
+                                <th class="py-3">Jurusan</th>
+                                <th class="py-3">Status</th>
+                                <th class="py-3 text-end pe-4 admin-only">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="formModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered animate__animated animate__zoomIn animate__faster">
+            <div class="modal-content border-0 rounded-4 shadow">
+                </div>
+                </div>
+            <div class="modal-content border-0 rounded-4 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold" id="modalTitle">Form Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-4">
+                    <input type="hidden" id="id-mhs">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small text-muted">NAMA</label>
+                        <input type="text" id="nama" class="form-control bg-light">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small text-muted">JURUSAN</label>
+                        <select id="jurusan" class="form-select bg-light">
+                            <option>Teknik Informatika</option><option>Sistem Informasi</option><option>Bisnis Digital</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small text-muted">STATUS</label>
+                        <select id="status" class="form-select bg-light">
+                            <option>Aktif</option><option>Cuti</option><option>Lulus</option>
+                        </select>
+                    </div>
+                    <button onclick="simpanData()" class="btn btn-primary w-100 rounded-3">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+</body>
+</html>
